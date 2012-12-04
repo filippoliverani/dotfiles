@@ -1,0 +1,9 @@
+#!/bin/sh
+
+path="$HOME/.dotfiles"
+
+git clone git@github.com:filippo-liverani/dotfiles.git $path
+
+ln -sfT $path/gitconfig ~/.gitconfig
+ln -sfT $path/gitignore ~/.gitignore
+ln -sfT $path/zshrc ~/.zshrc

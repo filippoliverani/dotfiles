@@ -1,0 +1,26 @@
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = auto
+    interactive = auto
+[user]
+    name = Filippo Liverani
+[core]
+    editor = vim
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    dc = diff --cached
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
+    who = shortlog -s -s-
+    aa = add -A
+[push]
+    default = simple
+[merge]
+    tool = vimdiff
+[diff]
+    tool = vimdiff
