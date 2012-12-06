@@ -6,6 +6,7 @@
     interactive = auto
 [user]
     name = Filippo Liverani
+    email = fili_live@yahoo.it
 [core]
     editor = vim
 [alias]
