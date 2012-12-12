@@ -6,6 +6,7 @@ git clone git@github.com:filippo-liverani/dotfiles.git $path
 
 ln -sfT $path/gitconfig ~/.gitconfig
 ln -sfT $path/gitignore ~/.gitignore
+ln -sfT $path/mongorc.js ~/.mongorc.js
 
 curl https://raw.github.com/filippo-liverani/zolarizedsh/master/bootstrap -L -o - | sh
 curl https://raw.github.com/filippo-liverani/simsalavim/master/bootstrap -L -o - | sh
