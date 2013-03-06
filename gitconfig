@@ -20,7 +20,7 @@
     who = shortlog -s -s-
     aa = add -A
 [push]
-    default = simple
+    default = current
 [merge]
     tool = vimdiff
 [diff]
