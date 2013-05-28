@@ -1,0 +1,7 @@
+--color
+--sort-files
+--smart-case
+--follow
+--max-count=100
+--ignore-dir=.bundle
+--ignore-dir=vendor

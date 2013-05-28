@@ -8,6 +8,7 @@ else
     git clone git@github.com:filippo-liverani/dotfiles.git $path
 fi
 
+ln -sfT $path/ackrc ~/.ackrc
 ln -sfT $path/tmux.conf ~/.tmux.conf
 ln -sfT $path/gitconfig ~/.gitconfig
 ln -sfT $path/gitignore ~/.gitignore
