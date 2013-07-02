@@ -12,6 +12,7 @@ ln -sfT $path/ackrc ~/.ackrc
 ln -sfT $path/tmux.conf ~/.tmux.conf
 ln -sfT $path/gitconfig ~/.gitconfig
 ln -sfT $path/gitignore ~/.gitignore
+ln -sfT $path/gemrc ~/.gemrc
 ln -sfT $path/mongorc.js ~/.mongorc.js
 ln -sfT $path/terminalrc ~/.config/xfce4/terminal/terminalrc
 
