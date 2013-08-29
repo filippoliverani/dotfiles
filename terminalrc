@@ -20,4 +20,6 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
+ScrollingLines=9000
+FontName=Monaco for Powerline 12
 
