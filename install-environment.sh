@@ -27,17 +27,18 @@ su filippo
 
 yaourt --noconfirm -Syu
 yaourt --noconfirm -S \
-  base-devel pacman-color openssh openssl tmux unrar unzip zsh \
-  cups parted bash-completion subversion git dstat iotop \
+  base-devel pacman-color openssh openssl wemux-git unrar unzip zsh \
+  cups parted bash-completion subversion git dstat iotop the_silver_searcher \
   colordiff colorsvn dfc cdu \
   wicd wicd-gtk dhclient \
   virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle\
   android-sdk-platform-tools php ruby vagrant \
-  alsa-lib alsa-oss alsa-utils gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
+  alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pavucontrol pulseaudio-alsa lib32-libpulse lib32-alsa-plugins\
+  gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
   xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics \
-  slim archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs \
-  xfwm-axiom-theme zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz \
-  inkscape gimp gcolor2 google-chrome profile-sync-daemon keepassx kupfer gksu gvim leafpad audacious skype xfmedia hotot-gtk3
+  slim archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs xfmedia gksu \
+  xfwm-axiom-theme zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
+  inkscape gimp gcolor2 google-chrome google-talkplugin keepassx kupfer gvim leafpad audacious skype hotot-gtk3
 
 sudo gpasswd -a filippo network
 sudo systemctl enable wicd.service
@@ -64,12 +65,6 @@ chsh -s $(which zsh)
 
 sudo sed -i 's/#x:5:respawn:\/usr\/bin\/slim\//x:5:respawn:\/usr\/bin\/slim\/' /etc/inittab
 sudo tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
-
-#psd
-
-sudo sed -i 's/USERS=""/USERS="filippo"/' /etc/psd.conf
-sudo tee -a /etc/psd.conf <<< 'BROWSERS="google-chrome"'
-systemctl enable psd.service psd-resync.service
 
 #virtualbox
 
