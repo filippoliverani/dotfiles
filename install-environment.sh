@@ -1,8 +1,17 @@
 #!/bin/bash
 
+set -e
+
+if (( EUID != 0 )); then
+   echo "You must be root to do this." 1>&2
+   exit 100
+fi
+
 cd /home/filippo
 
 #packages
+
+dhcpcd
 
 tee -a /etc/pacman.conf <<< "
 [archlinuxfr]
@@ -11,7 +20,7 @@ Server = http://repo.archlinux.fr/\$arch"
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist.backup
-rankmirrors -n 6 mirrorlist.backup > mirrorlist
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 rm /etc/pacman.d/mirrorlist.backup
 
 pacman-key --init
@@ -23,30 +32,33 @@ pacman --noconfirm -S sudo yaourt
 tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
 
-su filippo
 
-yaourt --noconfirm -Syu
-yaourt --noconfirm -S \
-  base-devel pacman-color openssh openssl wemux-git unrar unzip zsh \
+su - filippo -c 'yaourt --noconfirm -Syu'
+su - filippo -c 'yaourt --noconfirm -S \
+  pacmatic linux-lts base-devel openssh openssl wemux-git unrar unzip zsh \
   cups parted bash-completion subversion git dstat iotop the_silver_searcher \
   colordiff colorsvn dfc cdu \
-  wicd wicd-gtk dhclient \
+  wicd wicd-gtk dhclient b43-firmware\
   virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle\
   android-sdk-platform-tools php ruby vagrant \
   alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pavucontrol pulseaudio-alsa lib32-libpulse lib32-alsa-plugins\
   gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
   xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics \
-  slim archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs xfmedia gksu \
-  xfwm-axiom-theme zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-  inkscape gimp gcolor2 google-chrome google-talkplugin keepassx kupfer gvim leafpad audacious skype hotot-gtk3
+  slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gksu \
+  zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
+  inkscape gimp gcolor2 google-chrome google-talkplugin keepassx kupfer gvim leafpad audacious skype hotot-gtk3'
 
-sudo gpasswd -a filippo network
-sudo systemctl enable wicd.service
-sudo systemctl enable slim.service
+gpasswd -a filippo network
+systemctl enable wicd.service
+systemctl enable slim.service
+
+#pacman
+
+tee -a /etc/yaourtrc <<< 'PACMAN="pacmatic"'
 
 #performance
 
-sudo tee -a /etc/sysctl.conf <<< "
+tee -a /etc/sysctl.d/99-sysctl.conf <<< "
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
@@ -63,19 +75,25 @@ chsh -s $(which zsh)
 
 #x
 
-sudo sed -i 's/#x:5:respawn:\/usr\/bin\/slim\//x:5:respawn:\/usr\/bin\/slim\/' /etc/inittab
-sudo tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
+sed -i 's/#x:5:respawn:\/usr\/bin\/slim\//x:5:respawn:\/usr\/bin\/slim\/' /etc/inittab
+tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
+
+#slim
+
+tee -a /etc/slim.conf <<< "
+default_user filippo
+auto_login yes"
 
 #virtualbox
 
-sudo gpasswd -a filippo vboxusers
-sudo tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
-sudo modprobe vboxdrv
+gpasswd -a filippo vboxusers
+tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
+modprobe vboxdrv
 
 #ruby
 
 tee /etc/gemrc <<< "
 gem: --no-ri --no-rdoc"
-sudo gem update --system
+gem update --system
 
-sudo chown -R filippo.users /home/filippo
+chown -R filippo.users /home/filippo
