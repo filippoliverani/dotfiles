@@ -15,6 +15,7 @@ ln -sfT $path/gitignore ~/.gitignore
 ln -sfT $path/gemrc ~/.gemrc
 ln -sfT $path/mongorc.js ~/.mongorc.js
 ln -sfT $path/terminalrc ~/.config/xfce4/terminal/terminalrc
+ln -sfT $path/ssh_config ~/.ssh/config
 
 curl https://raw.github.com/filippo-liverani/zolarizedsh/master/bootstrap -L -o - | sh
 curl https://raw.github.com/filippo-liverani/simsalavim/master/bootstrap -L -o - | sh

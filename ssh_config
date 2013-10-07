@@ -1,0 +1,8 @@
+ControlMaster auto
+ControlPath ~/.ssh/socket-%r@%h:%p
+Compression yes
+CompressionLevel 4
+RequestTTY yes
+TCPKeepAlive yes
+ServerAliveInterval 60
+Ciphers blowfish-cbc,aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes128-cbc,3des-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour
