@@ -35,7 +35,7 @@ filippo ALL=(ALL) ALL"
 
 su - filippo -c 'yaourt --noconfirm -Syu'
 su - filippo -c 'yaourt --noconfirm -S \
-  pacmatic linux-lts base-devel openssh openssl wemux-git unrar unzip zsh \
+  pacmatic linux-lts base-devel openssh openssl tmux ruby-tmuxinator wemux-git unrar unzip zsh \
   cups parted bash-completion subversion git dstat iotop the_silver_searcher \
   colordiff colorsvn dfc cdu \
   wicd wicd-gtk dhclient b43-firmware\

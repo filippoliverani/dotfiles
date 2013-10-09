@@ -1,0 +1,8 @@
+# ~/.tmuxinator/subeng.yml
+
+project_name: subeng
+project_root: ~/Projects/subscription-engine
+windows:
+  - editor: vim
+  - shell: vagrant ssh
+  - git: gl
