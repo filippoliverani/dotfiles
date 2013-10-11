@@ -1,0 +1,10 @@
+# ~/.tmuxinator/cmsite.yml
+
+project_name: cmsite
+project_root: ~/Projects/neomobile/cmsite
+
+tabs:
+  - editor: vim
+  - shell: vagrant up; vagrant ssh
+  - server: sleep 10; vagrant ssh;
+  - git: gl; gst

@@ -1,8 +1,9 @@
 # ~/.tmuxinator/subeng.yml
 
 project_name: subeng
-project_root: ~/Projects/subscription-engine
-windows:
+project_root: ~/Projects/neomobile/subscription-engine
+
+tabs:
   - editor: vim
-  - shell: vagrant ssh
-  - git: gl
+  - shell: vagrant up; vagrant ssh
+  - git: gl; gst
