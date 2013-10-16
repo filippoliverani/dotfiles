@@ -46,7 +46,8 @@ su - filippo -c 'yaourt --noconfirm -S \
   xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip\
   slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gksu file-roller \
   zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-  inkscape gimp gcolor2 chromium google-talkplugin keepassx kupfer gvim leafpad parole skype hotot-gtk3 simple-scan'
+  inkscape gimp gcolor2 keepassx kupfer gvim leafpad parole skype hotot-gtk3 simple-scan \
+  chromium google-talkplugin chromium-pepper-flash-stable chromium-libpdf-stable'
 
 gpasswd -a filippo network
 systemctl enable wicd.service
