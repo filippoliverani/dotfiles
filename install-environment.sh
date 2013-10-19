@@ -7,7 +7,10 @@ if (( EUID != 0 )); then
    exit 100
 fi
 
-cd /home/filippo
+#user
+
+useradd -m -g users -G wheel -s /bin/bash filippo
+chown -R filippo.users /home/filippo
 
 #packages
 
@@ -32,22 +35,26 @@ pacman --noconfirm -S sudo yaourt
 tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
 
+BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh \
+              cups parted git colordiff dfc cdu wicd dhclient b43-firmware \
+              alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio  pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
+              gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
+              xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip \
+              slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gksu file-roller \
+              zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
+              wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor2 gvim leafpad parole skype hotot-gtk3 \
+              chromium google-talkplugin chromium-pepper-flash-stable chromium-libpdf-stable"
+DEV_PACKAGES="tmux ruby-tmuxinator wemux-git android-sdk-platform-tools php ruby vagrant dstat iotop the_silver_searcher \
+              virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
-su - filippo -c 'yaourt --noconfirm -Syu'
-su - filippo -c 'yaourt --noconfirm -S \
-  pacmatic linux-lts base-devel openssh openssl tmux ruby-tmuxinator wemux-git unrar unzip zsh \
-  cups parted bash-completion subversion git dstat iotop the_silver_searcher \
-  colordiff colorsvn dfc cdu \
-  wicd wicd-gtk dhclient b43-firmware\
-  virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle\
-  android-sdk-platform-tools php ruby vagrant \
-  alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pavucontrol pulseaudio-alsa lib32-libpulse lib32-alsa-plugins\
-  gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
-  xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip\
-  slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gksu file-roller \
-  zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-  inkscape gimp gcolor2 keepassx kupfer gvim leafpad parole skype hotot-gtk3 simple-scan \
-  chromium google-talkplugin chromium-pepper-flash-stable chromium-libpdf-stable'
+su - filippo -c "yaourt --noconfirm -Syu"
+su - filippo -c "yaourt --noconfirm -S $BASE_PACKAGES"
+if [ "$1" == "dev" ]
+  then
+    su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
+fi
+  
+#services
 
 gpasswd -a filippo network
 systemctl enable wicd.service
@@ -96,5 +103,3 @@ modprobe vboxdrv
 tee /etc/gemrc <<< "
 gem: --no-ri --no-rdoc"
 gem update --system
-
-chown -R filippo.users /home/filippo
