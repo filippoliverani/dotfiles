@@ -54,11 +54,10 @@ if [ "$1" == "dev" ]
     su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
 fi
   
-#services
+#wicd
 
 gpasswd -a filippo network
 systemctl enable wicd.service
-systemctl enable slim.service
 
 #pacman
 
@@ -81,16 +80,13 @@ fs.inotify.max_user_watches = 524288"
 
 chsh -s $(which zsh) filippo
 
-#x
-
-sed -i 's/#x:5:respawn:\/usr\/bin\/slim\//x:5:respawn:\/usr\/bin\/slim\/' /etc/inittab
-tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
-
 #slim
 
 tee -a /etc/slim.conf <<< "
 default_user filippo
 auto_login yes"
+tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
+systemctl enable slim.service
 
 #virtualbox
 
