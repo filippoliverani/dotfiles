@@ -30,7 +30,9 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman-key --refresh-keys
 pacman --noconfirm -Syu
-pacman --noconfirm -S sudo yaourt
+pacman --noconfirm -S sudo yaourt powerpill
+
+sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
 
 tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
