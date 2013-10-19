@@ -88,14 +88,18 @@ auto_login yes"
 tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
 systemctl enable slim.service
 
-#virtualbox
+if [ "$1" == "dev" ]
+  then
+    #virtualbox
+   
+    gpasswd -a filippo vboxusers
+    tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
+    modprobe vboxdrv
+   
+    #ruby
+   
+    tee /etc/gemrc <<< "
+    gem: --no-ri --no-rdoc"
+    gem update --system    
+fi
 
-gpasswd -a filippo vboxusers
-tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
-modprobe vboxdrv
-
-#ruby
-
-tee /etc/gemrc <<< "
-gem: --no-ri --no-rdoc"
-gem update --system
