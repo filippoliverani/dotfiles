@@ -38,15 +38,15 @@ tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
 
 BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh \
-              cups parted git colordiff dfc cdu wicd dhclient b43-firmware \
+              cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware \
               alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio  pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
               gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
               xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip \
               slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gksu file-roller \
               zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-              wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor2 gvim leafpad parole skype hotot-gtk3 \
+              wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor3 gvim python-powerline-git leafpad parole skype hotot-gtk3 \
               chromium google-talkplugin chromium-pepper-flash-stable chromium-libpdf-stable"
-DEV_PACKAGES="tmux ruby-tmuxinator wemux-git android-sdk-platform-tools php ruby vagrant dstat iotop the_silver_searcher \
+DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git vagrant dstat iotop the_silver_searcher subversion eclipse \
               virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
 su - filippo -c "yaourt --noconfirm -Syu"
