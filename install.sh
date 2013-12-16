@@ -44,8 +44,8 @@ BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh \
               xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip \
               slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gvfs-smb gksu file-roller evince\
               zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-              wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor3 gvim python-powerline-git leafpad parole skype hotot-gtk3 \
-              chromium google-talkplugin chromium-pepper-flash-stable"
+              remmina wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor3 gvim python-powerline-git leafpad parole skype hotot-gtk3 \
+              chromium freerdp google-talkplugin chromium-pepper-flash-stable"
 DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git vagrant dstat iotop the_silver_searcher subversion eclipse \
               virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
@@ -55,11 +55,17 @@ if [ "$1" == "dev" ]
   then
     su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
 fi
-  
+
+#ssh
+
+systemctl enable sshd.service
+systemctl start sshd.service
+
 #wicd
 
 gpasswd -a filippo network
 systemctl enable wicd.service
+systemctl start wicd.service
 
 #pacman
 
@@ -93,15 +99,19 @@ systemctl enable slim.service
 if [ "$1" == "dev" ]
   then
     #virtualbox
-   
+
     gpasswd -a filippo vboxusers
     tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
     modprobe vboxdrv
-   
+
     #ruby
-   
+
     tee /etc/gemrc <<< "
     gem: --no-ri --no-rdoc"
     gem update --system    
+
+    #vagrant
+
+    vagrant plugin install vagrant-windows vagrant-vbguest
 fi
 
