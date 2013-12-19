@@ -37,7 +37,7 @@ sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
 tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
 
-BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh \
+BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils\
               cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware \
               alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio  pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
               gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
@@ -88,12 +88,18 @@ fs.inotify.max_user_watches = 524288"
 
 chsh -s $(which zsh) filippo
 
+#nfs
+
+systectl enable rpc-idmapd.service
+systectl start rpc-idmapd.service
+systectl enable rpc-mountd.service
+systectl start rpc-mountd.service
+
 #slim
 
 tee -a /etc/slim.conf <<< "
 default_user filippo
 auto_login yes"
-tee -a /home/filippo/.xinitrc <<< "exec startxfce4"
 systemctl enable slim.service
 
 if [ "$1" == "dev" ]
@@ -102,13 +108,13 @@ if [ "$1" == "dev" ]
 
     gpasswd -a filippo vboxusers
     tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
-    modprobe vboxdrv
+    sudo modprobe -a vboxdrv vboxnetadp vboxnetflt
 
     #ruby
 
     tee /etc/gemrc <<< "
     gem: --no-ri --no-rdoc"
-    gem update --system    
+    gem update --system
 
     #vagrant
 
