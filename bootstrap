@@ -17,11 +17,14 @@ ln -sfT $path/gitconfig ~/.gitconfig
 ln -sfT $path/gitignore ~/.gitignore
 ln -sfT $path/gemrc ~/.gemrc
 ln -sfT $path/mongorc.js ~/.mongorc.js
+ln -sfT $path/ssh_config ~/.ssh/config
+mkdir -p .config/fontconfig
+ln -sfT $path/fonts.conf ~/.config/fontconfig/fonts.conf
 mkdir -p .config/powerline
 ln -sfT $path/powerline-config.json ~/.config/powerline/config.json
-ln -sfT $path/ssh_config ~/.ssh/config
-mkdir -p .config/i3
-ln -sfT $path/i3-config ~/.config/i3/config
+mkdir -p .i3
+ln -sfT $path/i3-config ~/.i3/config
+ln -sfT $path/i3status.conf ~/.i3status.conf
 mkdir -p .config/xfce4/terminal
 ln -sfT $path/terminalrc ~/.config/xfce4/terminal/terminalrc
 

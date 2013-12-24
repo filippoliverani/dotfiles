@@ -37,24 +37,38 @@ sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
 tee -a /etc/sudoers <<< "
 filippo ALL=(ALL) ALL"
 
-BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils\
-              cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware \
-              alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio  pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
+BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool \
+              cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware ranger python-powerline-git \
+              alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
               gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
               xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip \
-              slim slim-themes archlinux-themes-slim xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer thunar-volman gvfs gvfs-smb gksu file-roller evince\
-              zukitwo-themes faenza-icon-theme faenza-xfce-addon ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
-              remmina wicd-gtk pavucontrol keepassx kupfer simple-scan inkscape gimp gcolor3 gvim python-powerline-git leafpad parole skype hotot-gtk3 \
+              slim slim-themes archlinux-themes-slim \
+              zukitwo-themes faenza-icon-theme ttf-dejavu artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
+              remmina wicd-gtk pavucontrol keepassx simple-scan inkscape gimp gcolor3 gvim leafpad parole skype hotot-gtk3 \
               chromium freerdp google-talkplugin chromium-pepper-flash-stable"
-DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git vagrant dstat iotop the_silver_searcher subversion eclipse \
+XFCE_PACKAGES="xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer faenza-xfce-addon thunar-volman gvfs gvfs-smb gksu file-roller kupfer evince "
+I3_PACAKGES="i3 dmenu-xft feh lxappearance xfce4-terminal apvlv"
+DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git packer-io vagrant dstat iotop the_silver_searcher subversion eclipse \
               virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
 su - filippo -c "yaourt --noconfirm -Syu"
 su - filippo -c "yaourt --noconfirm -S $BASE_PACKAGES"
-if [ "$1" == "dev" ]
-  then
-    su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
-fi
+while test $# -gt 0
+do
+    case "$1" in
+        dev)
+            su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
+            DEV=true
+            ;;
+        xfce)
+            su - filippo -c "yaourt --noconfirm -S $XFCE_PACKAGES"
+            ;;
+        i3)
+            su - filippo -c "yaourt --noconfirm -S $I3_PACKAGES"
+            ;;
+    esac
+    shift
+done
 
 #ssh
 
@@ -102,7 +116,7 @@ default_user filippo
 auto_login yes"
 systemctl enable slim.service
 
-if [ "$1" == "dev" ]
+if [ "$DEV" ]
   then
     #virtualbox
 
