@@ -1,0 +1,10 @@
+# ~/.tmuxinator/peperone.yml
+
+project_name: peperone
+project_root: ~/Projects/neomobile/peperone
+
+tabs:
+  - editor: vim
+  - shell: vagrant up; vagrant ssh
+  - server: sleep 10; vagrant ssh;
+  - git: gl; gst
