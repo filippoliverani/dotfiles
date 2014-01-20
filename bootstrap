@@ -18,6 +18,8 @@ ln -sfT $path/gitignore ~/.gitignore
 ln -sfT $path/gemrc ~/.gemrc
 ln -sfT $path/mongorc.js ~/.mongorc.js
 ln -sfT $path/ssh_config ~/.ssh/config
+mkdir -p .local/share/applications
+ln -sfT $path/mimeapps.list ~/.local/share/applications/mimeapps.list
 mkdir -p .config/fontconfig
 ln -sfT $path/fonts.conf ~/.config/fontconfig/fonts.conf
 mkdir -p .config/powerline

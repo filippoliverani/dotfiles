@@ -1,0 +1,10 @@
+[Added Associations]
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
+x-scheme-handler/mailto=exo-mail-reader.desktop
+application/pdf=apvlv.desktop
+image/png=feh.desktop;
+image/jpeg=feh.desktop;
+application/vnd.oasis.opendocument.presentation=libreoffice-startcenter.desktop;libreoffice-impress.desktop;
+text/plain=leafpad.desktop;
+application/xml=leafpad.desktop;
