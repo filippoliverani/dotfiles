@@ -7,10 +7,12 @@ if (( EUID != 0 )); then
    exit 100
 fi
 
+username='filippo'
+
 #user
 
-useradd -m -g users -G wheel -s /bin/bash filippo
-chown -R filippo.users /home/filippo
+useradd -m -g users -G wheel -s /bin/bash $username
+chown -R $username /home/$username
 
 #packages
 
@@ -35,7 +37,7 @@ pacman --noconfirm -S sudo yaourt powerpill
 sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
 
 tee -a /etc/sudoers <<< "
-filippo ALL=(ALL) ALL"
+$username ALL=(ALL) ALL"
 
 BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool \
               cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware ranger python-powerline-git \
@@ -47,24 +49,24 @@ BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs
               remmina wicd-gtk pavucontrol keepassx simple-scan inkscape gimp gcolor3 gvim leafpad parole skype hotot-gtk3 \
               chromium freerdp google-talkplugin chromium-pepper-flash-stable"
 XFCE_PACKAGES="xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer faenza-xfce-addon thunar-volman gvfs gvfs-smb gksu file-roller kupfer evince "
-I3_PACAKGES="i3 dmenu-xft feh lxappearance lxrandr xfce4-terminal apvlv"
+I3_PACAKGES="i3 dmenu-xft feh lxappearance xfce4-terminal apvlv udisks2"
 DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git packer-io vagrant dstat iotop the_silver_searcher subversion eclipse \
               virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
-su - filippo -c "yaourt --noconfirm -Syu"
-su - filippo -c "yaourt --noconfirm -S $BASE_PACKAGES"
+su - $username -c "yaourt --noconfirm -Syu"
+su - $username -c "yaourt --noconfirm -S $BASE_PACKAGES"
 while test $# -gt 0
 do
     case "$1" in
         dev)
-            su - filippo -c "yaourt --noconfirm -S $DEV_PACKAGES"
+            su - $username -c "yaourt --noconfirm -S $DEV_PACKAGES"
             DEV=true
             ;;
         xfce)
-            su - filippo -c "yaourt --noconfirm -S $XFCE_PACKAGES"
+            su - $username -c "yaourt --noconfirm -S $XFCE_PACKAGES"
             ;;
         i3)
-            su - filippo -c "yaourt --noconfirm -S $I3_PACKAGES"
+            su - $username -c "yaourt --noconfirm -S $I3_PACKAGES"
             ;;
     esac
     shift
@@ -77,7 +79,7 @@ systemctl start sshd.service
 
 #wicd
 
-gpasswd -a filippo network
+gpasswd -a $username network
 systemctl enable wicd.service
 systemctl start wicd.service
 
@@ -100,7 +102,7 @@ fs.inotify.max_user_watches = 524288"
 
 #zsh
 
-chsh -s $(which zsh) filippo
+chsh -s $(which zsh) $username
 
 #nfs
 
@@ -112,16 +114,24 @@ systectl start rpc-mountd.service
 #slim
 
 tee -a /etc/slim.conf <<< "
-default_user filippo
-auto_login yes"
+  default_user $username
+  auto_login yes"
 systemctl enable slim.service
+
+#powerline
+
+mkdir -p /home/$username/.config/powerline
+cp -R /usr/lib/python3.3/site-packages/powerline/config_files/** /home/$username/.config/powerline
 
 if [ "$DEV" ]
   then
     #virtualbox
 
-    gpasswd -a filippo vboxusers
-    tee /etc/modules-load.d/virtualbox.conf <<< "vboxdrv"
+    gpasswd -a $username vboxusers
+    tee /etc/modules-load.d/virtualbox.conf <<< "
+      vboxdrv
+      vboxnetadp
+      vboxnetflt"
     sudo modprobe -a vboxdrv vboxnetadp vboxnetflt
 
     #ruby
