@@ -85,6 +85,10 @@ bindsym Mod4+2 workspace 2
 bindsym Mod4+Shift+1 move container to workspace 1
 bindsym Mod4+Shift+2 move container to workspace 2
 
+#move workspace to outputs
+bindsym Mod4+Mod1+h move workspace to output left
+bindsym Mod4+Mod1+l move workspace to output right
+
 # reload the configuration file
 bindsym Mod4+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -118,18 +122,26 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 
-# Keyboard layout
-bindsym Mod4+Shift+i exec setxkbmap it
-bindsym Mod4+Shift+u exec setxkbmap us
+# keyboard layout
+bindsym Mod4+Shift+i exec --no-startup-id setxkbmap it
+bindsym Mod4+Shift+u exec --no-startup-id setxkbmap us
 
-# Volume
+# volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
+
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+# shutdown
+bindsym Mod4+Shift+Escape exec --no-startup-id systemctl poweroff
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+        position top
         font pango:Monaco for Powerline bold 13
         colors {
             background #073642
@@ -141,12 +153,15 @@ bar {
 }
 # class                 border  backgr  text    indicator
 client.focused          #586E75 #586E75 #fdf6e3 #2e9ef4
-client.focused_inactive #073642 #073642 #93a1a1 #484e50
-client.unfocused        #073642 #073642 #93a1a1 #484e50
+client.focused_inactive #93a1a1 #eee8d5 #93a1a1 #484e50
+client.unfocused        #93a1a1 #eee8d5 #93a1a1 #484e50
 
 exec --no-startup-id xsetroot -solid "#002b36"
 exec --no-startup-id syndaemon -t -k -i 2 -d &
-exec --no-startup-id dropboxd &
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id chromium
+exec --no-startup-id dropboxd &
+exec --no-startup-id hotot-gtk3
 exec --no-startup-id skype
+exec --no-startup-id chromium
+exec --no-startup-id xfce4-terminal
+exec --no-startup-id monitor-right
