@@ -3,7 +3,7 @@
 project_name: subeng
 project_root: ~/Projects/neomobile/subscription-engine
 
-tabs:
+windows:
   - editor: vim
   - shell: vagrant up; vagrant ssh
   - git: gl; gst
