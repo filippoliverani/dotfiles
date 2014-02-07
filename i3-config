@@ -80,10 +80,14 @@ bindsym Mod4+a focus parent
 # switch to workspace
 bindsym Mod4+1 workspace 1
 bindsym Mod4+2 workspace 2
+bindsym Mod4+3 workspace 3
+bindsym Mod4+4 workspace 4
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace 1
 bindsym Mod4+Shift+2 move container to workspace 2
+bindsym Mod5+Shift+3 move container to workspace 3
+bindsym Mod4+Shift+4 move container to workspace 4
 
 #move workspace to outputs
 bindsym Mod4+Mod1+h move workspace to output left
@@ -99,11 +103,6 @@ bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h           resize shrink width 10 px or 10 ppt
         bindsym j           resize grow height 10 px or 10 ppt
         bindsym k           resize shrink height 10 px or 10 ppt
