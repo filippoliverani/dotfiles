@@ -50,7 +50,8 @@ BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs
                chromium freerdp google-talkplugin chromium-pepper-flash-stable"
 XFCE_PACKAGES="xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer faenza-xfce-addon \
                thunar-volman gvfs gvfs-smb gksu file-roller kupfer evince parole"
-I3_PACAKGES="i3 dmenu-xft feh lxappearance rxvt-unicode-patched-noinc-vteclear urxvt-clipboard xfce4-terminal apvlv udisks2 mplayer cmus"
+I3_PACAKGES="i3 dmenu-xft feh rxvt-unicode-patched-noinc-vteclear urxvt-clipboard curlftpfs apvlv udisks2 mplayer cmus\
+             lxappearance xfce4-terminal"
 DEV_PACKAGES="tmux ruby ruby-tmuxinator wemux-git packer-io vagrant dstat iotop the_silver_searcher subversion eclipse \
               virtualbox virtualbox-host-modules virtualbox-guest-iso virtualbox-ext-oracle"
 
