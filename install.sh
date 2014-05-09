@@ -112,6 +112,10 @@ systectl start rpc-idmapd.service
 systectl enable rpc-mountd.service
 systectl start rpc-mountd.service
 
+#ntp
+
+systemctl start ntpdate.service
+
 #slim
 
 tee -a /etc/slim.conf <<< "
