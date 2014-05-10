@@ -128,6 +128,7 @@ bindsym Mod4+Shift+u exec --no-startup-id setxkbmap us
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-volume 0 -- 0 && killall -SIGUSR1 i3status
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
