@@ -14,6 +14,9 @@ floating_modifier Mod4
 #bindsym Mod4+Return exec i3-sensible-terminal
 bindsym Mod4+Return exec xfce4-terminal
 
+# no focus on mouse over
+focus_follows_mouse no
+
 # kill focused window
 bindsym Mod4+Shift+q kill
 
