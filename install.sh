@@ -40,7 +40,7 @@ tee -a /etc/sudoers <<< "
 $username ALL=(ALL) ALL"
 
 BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool \
-               cups parted git htop colordiff dfc cdu wicd dhclient b43-firmware ranger python-powerline-git \
+               cups parted git htop colordiff dfc cdu wicd dhclient broadcom-wl ranger python-powerline-git \
                alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
                gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
                xorg-server xorg-apps xorg-xinit xorg-server-utils xf86-video-nouveau xf86-video-intel xf86-video-ati xf86-input-synaptics xclip \
@@ -74,12 +74,16 @@ do
     shift
 done
 
+depmod -a
+
 #ssh
 
 systemctl enable sshd.service
 systemctl start sshd.service
 
 #wicd
+
+systemctl enable dkms.service
 
 gpasswd -a $username network
 systemctl enable wicd.service
