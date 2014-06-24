@@ -39,6 +39,9 @@ sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
 tee -a /etc/sudoers <<< "
 $username ALL=(ALL) ALL"
 
+systemctl enable dkms
+systemctl start dkms
+
 BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool \
                cups parted git htop colordiff dfc cdu wicd dhclient broadcom-wl ranger python-powerline-git \
                alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
