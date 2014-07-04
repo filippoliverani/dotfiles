@@ -5,7 +5,7 @@
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:Monaco for Powerline bold 13
+font pango:DejaVu Sans 14
 
 # use Mouse+Mod4 to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -145,7 +145,7 @@ bindsym Mod4+Shift+Escape exec --no-startup-id systemctl poweroff
 bar {
         status_command i3status
         position top
-        font pango:Monaco for Powerline bold 13
+        font pango:DejaVu Sans 14, Icons 14
         colors {
             background #073642
             statusline #93a1a1
