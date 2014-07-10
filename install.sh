@@ -98,16 +98,28 @@ tee -a /etc/yaourtrc <<< 'PACMAN="pacmatic"'
 
 #performance
 
-tee -a /etc/sysctl.d/99-sysctl.conf <<< "
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
+tee /etc/sysctl.d/performance.conf <<< "
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
 vm.vfs_cache_pressure = 50
-vm.laptop_mode = 1
 vm.swappiness = 10
+vm.dirty_ratio = 3
+vm.dirty_background_ratio = 2
 kernel.shmmax=17179869184
 kernel.shmall=4194304
-fs.inotify.max_user_watches = 524288"
+fs.inotify.max_user_watches = 524288
+"
+
+#power saving
+tee /etc/sysctl.d/powersave.conf <<< "
+vm.dirty_writeback_centisecs = 1500
+vm.laptop_mode = 5
+"
+
+tee /etc/modprobe.d/powersave.conf <<< "
+options snd_hda_intel power_save=1
+options snd_ac97_codec power_save=1
+"
 
 #zsh
 
