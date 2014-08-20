@@ -139,13 +139,20 @@ systemctl start ntpdate.service
 
 tee -a /etc/slim.conf <<< "
   default_user $username
-  auto_login yes"
+  auto_login yes
+"
 systemctl enable slim.service
 
 #powerline
 
 mkdir -p /home/$username/.config/powerline
 cp -R /usr/lib/python3.3/site-packages/powerline/config_files/** /home/$username/.config/powerline
+
+#chromium
+
+tee /etc/chromium/default <<< '
+CHROMIUM_FLAGS="--reset-variation-state --disk-cache-dir=/tmp/chromium-cache --disk-cache-size=50000000 --disable-metrics --disable-hang-monitor --disable-dev-tools --disable-logging --disable-plugins-discovery --disable-translate --no-experiments --no-pings --no-referrers --memory-model=low --enable-accelerated-compositing --ignore-gpu-blacklist
+'
 
 if [ "$DEV" ]
   then
