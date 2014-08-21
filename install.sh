@@ -151,7 +151,7 @@ cp -R /usr/lib/python3.3/site-packages/powerline/config_files/** /home/$username
 #chromium
 
 tee /etc/chromium/default <<< '
-CHROMIUM_FLAGS="--reset-variation-state --disk-cache-dir=/tmp/chromium-cache --disk-cache-size=50000000 --disable-metrics --disable-hang-monitor --disable-dev-tools --disable-logging --disable-plugins-discovery --disable-translate --no-experiments --no-pings --no-referrers --memory-model=low --enable-accelerated-compositing --ignore-gpu-blacklist
+CHROMIUM_FLAGS="--reset-variation-state --disk-cache-dir=/tmp/chromium-cache --disk-cache-size=50000000 --disable-metrics --disable-hang-monitor --disable-dev-tools --disable-logging --disable-plugins-discovery --disable-translate --no-experiments --no-pings --no-referrers --memory-model=low --enable-accelerated-compositing --ignore-gpu-blacklist"
 '
 
 if [ "$DEV" ]
