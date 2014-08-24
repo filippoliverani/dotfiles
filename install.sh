@@ -112,6 +112,7 @@ fs.inotify.max_user_watches = 524288
 
 #power saving
 tee /etc/sysctl.d/powersave.conf <<< "
+kernel.nmi_watchdog = 0
 vm.dirty_writeback_centisecs = 1500
 vm.laptop_mode = 5
 "
