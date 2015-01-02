@@ -28,13 +28,17 @@ sed '/^#\S/ s|#||' -i /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 rm /etc/pacman.d/mirrorlist.backup
 
+pacman -Syu haveged
+systemctl start haveged
+systemctl enable haveged
+rm -fr /etc/pacman.d/gnupg
 pacman-key --init
 pacman-key --populate archlinux
 pacman-key --refresh-keys
-pacman --noconfirm -Syu
-pacman --noconfirm -S sudo yaourt powerpill
 
-sed "s|/usr/bin/pacman|/usr/bin/yaourt|" -i /etc/powerpill/powerpill.json
+pacman --noconfirm -Syu
+pacman --noconfirm -S sudo yaourt
+
 
 tee -a /etc/sudoers <<< "
 $username ALL=(ALL) ALL"
@@ -42,7 +46,7 @@ $username ALL=(ALL) ALL"
 systemctl enable dkms
 systemctl start dkms
 
-BASE_PACKAGES="pacmatic linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool ntp \
+BASE_PACKAGES="pacmatic powerpill linux-lts base-devel openssh openssl unrar unzip zsh nfs-utils atool ntp haveged \
                cups parted git htop colordiff dfc cdu wicd dhclient broadcom-wl ranger python-powerline-git \
                alsa-lib alsa-oss alsa-utils lib32-alsa-lib pulseaudio pulseaudio-alsa lib32-libpulse lib32-alsa-plugins \
                gstreamer0.10-plugins gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins \
@@ -94,7 +98,8 @@ systemctl start wicd.service
 
 #pacman
 
-tee -a /etc/yaourtrc <<< 'PACMAN="pacmatic"'
+tee -a /etc/yaourtrc <<< 'PACMAN="powerpill"'
+sed "s|/usr/bin/pacman|/usr/bin/pacmatic|" -i /etc/powerpill/powerpill.json
 
 #performance
 
