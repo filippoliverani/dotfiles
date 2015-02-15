@@ -54,7 +54,7 @@ BASE_PACKAGES="pacmatic powerpill linux-lts base-devel openssh openssl unrar unz
                slim slim-themes archlinux-themes-slim \
                zukitwo-themes faenza-icon-theme ttf-dejavu ttf-font-icons artwiz-fonts xcursor-vanilla-dmz lib32-gtk2 \
                remmina wicd-gtk pavucontrol keepassx simple-scan inkscape gimp gcolor3 gvim leafpad skype dropbox grive \
-               chromium freerdp google-talkplugin chromium-pepper-flash-stable"
+               google-chrome google-talkplugin"
 XFCE_PACKAGES="xfce4 xfce4-goodies xfce4-screenshooter xfce4-mixer faenza-xfce-addon \
                thunar-volman gvfs gvfs-smb gksu file-roller kupfer evince parole"
 I3_PACAKGES="i3-wm-iconpatch dmenu-xft dmenu_aliases feh rxvt-unicode-patched-noinc-vteclear urxvt-clipboard curlftpfs apvlv udisks2 mplayer cmus\
