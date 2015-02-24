@@ -18,16 +18,16 @@ ln -sf $path/gitignore ~/.gitignore
 ln -sf $path/gemrc ~/.gemrc
 ln -sf $path/mongorc.js ~/.mongorc.js
 ln -sf $path/ssh_config ~/.ssh/config
-mkdir -p .local/share/applications
+mkdir -p ~/.local/share/applications
 ln -sf $path/mimeapps.list ~/.local/share/applications/mimeapps.list
-mkdir -p .config/fontconfig
+mkdir -p ~/.config/fontconfig
 ln -sf $path/fonts.conf ~/.config/fontconfig/fonts.conf
-mkdir -p .config/powerline
+mkdir -p ~/.config/powerline
 ln -sf $path/powerline-config.json ~/.config/powerline/config.json
-mkdir -p .i3
+mkdir -p ~/.i3
 ln -sf $path/i3-config ~/.i3/config
 ln -sf $path/i3status.conf ~/.i3status.conf
-mkdir -p .config/xfce4/terminal
+mkdir -p ~/.config/xfce4/terminal
 ln -sf $path/terminalrc ~/.config/xfce4/terminal/terminalrc
 
 curl https://raw.github.com/filippo-liverani/zolarizedsh/master/bootstrap -L -o - | sh
