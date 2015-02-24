@@ -14,12 +14,14 @@ brew install psutils
 brew install git
 brew install ruby
 brew install python
+brew install tmux
 brew install caskroom/cask/brew-cask
 
 #cask
 
+brew cask install amethyst
 brew cask install caffeine
-brew cask install chromium
+brew cask install google-chrome
 brew cask install dropbox
 brew cask install flux
 brew cask install macvim
