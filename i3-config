@@ -18,10 +18,10 @@ bindsym Mod4+Return exec xfce4-terminal
 focus_follows_mouse no
 
 # kill focused window
-bindsym Mod4+Shift+q kill
+bindsym Mod4+Shift+w kill
 
 # start dmenu (a program launcher)
-bindsym Mod4+d exec dmenu_run_aliases -fn "Monaco for Powerline-14" -nb "#eee8d5" -nf "#586e75" -sb "#dc322f"
+bindsym Mod4+d exec dmenu_run -fn "Monaco for Powerline-14" -nb "#eee8d5" -nf "#586e75" -sb "#dc322f"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -162,8 +162,8 @@ client.unfocused        #93a1a1 #eee8d5 #93a1a1 #484e50
 exec --no-startup-id xsetroot -solid "#002b36"
 exec --no-startup-id syndaemon -t -k -i 2 -d &
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id dropboxd &
+exec --no-startup-id dropbox &
 exec --no-startup-id xflux -l 45.7 -g 9.7
 exec --no-startup-id skype
-exec --no-startup-id chromium
+exec --no-startup-id google-chrome-stable
 exec --no-startup-id xfce4-terminal
