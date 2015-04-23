@@ -15,6 +15,8 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.Finder QuitMenuItem -bool true
+defaults write com.apple.finder CreateDesktop -bool true
+killall Finder
 
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
@@ -60,20 +62,26 @@ brew install python
 brew install tmux
 brew install the_silver_searcher
 brew install vim --with-python --with-ruby --with-perl --env-std --override-system-vim
+brew install boot2docker
+brew install docker-compose
 brew install caskroom/cask/brew-cask
 
 #cask
 
-brew cask install amethyst
-brew cask install caffeine
-brew cask install google-chrome
-brew cask install dropbox
-brew cask install flux
-brew cask install java
-brew cask install skype
-brew cask install the-unarchiver
-brew cask install vagrant
-brew cask install virtualbox
+brew cask install --appdir="/Applications" amethyst
+brew cask install --appdir="/Applications" caffeine
+brew cask install --appdir="/Applications" google-chrome
+brew cask install --appdir="/Applications" dropbox
+brew cask install --appdir="/Applications" flux
+brew cask install --appdir="/Applications" java
+brew cask install --appdir="/Applications" skype
+brew cask install --appdir="/Applications" calibre
+brew cask install --appdir="/Applications" google-drive
+brew cask install --appdir="/Applications" iterm2
+brew cask install --appdir="/Applications" the-unarchiver
+brew cask install --appdir="/Applications" vagrant
+brew cask install --appdir="/Applications" virtualbox
+brew cask install --appdir="/Applications" packer
 
 #powerline
 
