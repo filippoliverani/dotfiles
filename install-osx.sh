@@ -16,20 +16,28 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.Finder QuitMenuItem -bool true
 defaults write com.apple.finder CreateDesktop -bool true
-killall Finder
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults write com.apple.finder QLEnableTextSelection -bool true
 
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 defaults write NSGlobalDomain KeyRepeat -int 0
 
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+defaults write com.apple.dock no-glass -bool true
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-time-modifier -float 1
 
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -47,6 +55,10 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+killall Finder
+killall Dock
+killall SystemUIServer
 
 sudo pmset -a sms 0
 hash tmutil &> /dev/null && sudo tmutil disablelocal
@@ -68,23 +80,29 @@ brew install caskroom/cask/brew-cask
 
 #cask
 
-brew cask install --appdir="/Applications" amethyst
-brew cask install --appdir="/Applications" caffeine
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" dropbox
-brew cask install --appdir="/Applications" flux
-brew cask install --appdir="/Applications" java
-brew cask install --appdir="/Applications" skype
-brew cask install --appdir="/Applications" calibre
-brew cask install --appdir="/Applications" google-drive
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" the-unarchiver
-brew cask install --appdir="/Applications" vagrant
-brew cask install --appdir="/Applications" virtualbox
-brew cask install --appdir="/Applications" packer
+CASK_OPTIONS='--appdir="/Applications"'
+brew cask install $CASK_OPTIONS amethyst
+brew cask install $CASK_OPTIONS caffeine
+brew cask install $CASK_OPTIONS google-chrome
+brew cask install $CASK_OPTIONS dropbox
+brew cask install $CASK_OPTIONS flux
+brew cask install $CASK_OPTIONS java
+brew cask install $CASK_OPTIONS skype
+brew cask install $CASK_OPTIONS calibre
+brew cask install $CASK_OPTIONS google-drive
+brew cask install $CASK_OPTIONS keepassx0
+brew cask install $CASK_OPTIONS evernote
+brew cask install $CASK_OPTIONS iterm2
+brew cask install $CASK_OPTIONS the-unarchiver
+brew cask install $CASK_OPTIONS vagrant
+brew cask install $CASK_OPTIONS virtualbox
+brew cask install $CASK_OPTIONS packer
+brew cask install $CASK_OPTIONS atom
 
 #powerline
 
+pip install --upgrade pip
+pip install --upgrade setuptools
 pip install git+git://github.com/Lokaltog/powerline
 pip install psutil
 
