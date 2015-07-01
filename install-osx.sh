@@ -68,10 +68,13 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 brew install psutils
+brew install dfc
 brew install git
 brew install ruby
 brew install python
 brew install tmux
+brew install tree
+brew install ranger
 brew install the_silver_searcher
 brew install vim --with-python --with-ruby --with-perl --env-std --override-system-vim
 brew install boot2docker
@@ -83,16 +86,19 @@ brew install caskroom/cask/brew-cask
 brew cask install --appdir="/Applications" --force amethyst
 brew cask install --appdir="/Applications" --force caffeine
 brew cask install --appdir="/Applications" --force cyberduck
+brew cask install --appdir="/Applications" --force alfred
 brew cask install --appdir="/Applications" --force google-chrome
 brew cask install --appdir="/Applications" --force google-drive
 brew cask install --appdir="/Applications" --force google-hangouts
 brew cask install --appdir="/Applications" --force dropbox
 brew cask install --appdir="/Applications" --force flux
 brew cask install --appdir="/Applications" --force skype
+brew cask install --appdir="/Applications" --force skitch
 brew cask install --appdir="/Applications" --force calibre
 brew cask install --appdir="/Applications" --force evernote
 brew cask install --appdir="/Applications" --force iterm2
 brew cask install --appdir="/Applications" --force the-unarchiver
+brew cask install --appdir="/Applications" --force coconutbattery
 brew cask install --appdir="/Applications" --force chefdk
 brew cask install --appdir="/Applications" --force vagrant
 brew cask install --appdir="/Applications" --force packer
