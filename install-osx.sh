@@ -82,10 +82,11 @@ brew install docker-compose
 brew install caskroom/cask/brew-cask
 
 #cask
-
 brew cask install --appdir="/Applications" --force caffeine
 brew cask install --appdir="/Applications" --force cyberduck
 brew cask install --appdir="/Applications" --force alfred
+brew cask install --appdir="/Applications" --force pomodone
+brew cask install --appdir="/Applications" --force slack
 brew cask install --appdir="/Applications" --force google-drive
 brew cask install --appdir="/Applications" --force google-hangouts
 brew cask install --appdir="/Applications" --force flux
@@ -97,9 +98,6 @@ brew cask install --appdir="/Applications" --force chefdk
 brew cask install --appdir="/Applications" --force vagrant
 brew cask install --appdir="/Applications" --force packer
 brew cask install --appdir="/Applications" --force atom
-brew cask install --appdir="/Applications" --force gimp
-brew cask install --appdir="/Applications" --force xquartz
-brew cask install --appdir="/Applications" --force inkscape
 brew cask install --appdir="/Applications" --force java
 brew cask install --appdir="/Applications" --force virtualbox
 brew cask install --appdir="/Applications" --force steam
