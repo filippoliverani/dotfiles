@@ -1,9 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
 set -e
 
-tee ~/.profile  << '
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-'
+echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' > ~/.profile
 
 # config
 
@@ -64,6 +62,7 @@ sudo pmset -a sms 0
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 #brew
+export HOMEBREW_NO_ANALYTICS=1
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 xcode-select --install
@@ -73,7 +72,8 @@ brew install psutils
 brew install dfc
 brew install git
 brew install ruby
-brew install python3
+brew install python
+brew install npm
 brew install tmux
 brew install reattach-to-user-namespace
 brew install tree
@@ -85,14 +85,13 @@ brew install docker-machine
 brew install caskroom/cask/brew-cask
 
 #cask
+brew cask install --appdir="/Applications" --force alfred
 brew cask install --appdir="/Applications" --force caffeine
 brew cask install --appdir="/Applications" --force cyberduck
-brew cask install --appdir="/Applications" --force alfred
 brew cask install --appdir="/Applications" --force pomodone
-brew cask install --appdir="/Applications" --force slack
+brew cask install --appdir="/Applications" --force monolingual
+brew cask install --appdir="/Applications" --force tunnelblick
 brew cask install --appdir="/Applications" --force google-drive
-brew cask install --appdir="/Applications" --force google-hangouts
-brew cask install --appdir="/Applications" --force flux
 brew cask install --appdir="/Applications" --force skype
 brew cask install --appdir="/Applications" --force calibre
 brew cask install --appdir="/Applications" --force iterm2
@@ -101,9 +100,10 @@ brew cask install --appdir="/Applications" --force chefdk
 brew cask install --appdir="/Applications" --force vagrant
 brew cask install --appdir="/Applications" --force packer
 brew cask install --appdir="/Applications" --force atom
-brew cask install --appdir="/Applications" --force java
 brew cask install --appdir="/Applications" --force virtualbox
-brew cask install --appdir="/Applications" --force steam
+brew cask install --appdir="/Applications" --force gimp
+brew cask install --appdir="/Applications" --force inkscape
+brew cask install --appdir="/Applications" --force postman
 
 #powerline
 
