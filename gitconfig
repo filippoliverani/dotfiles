@@ -25,3 +25,5 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+[pull]
+    rebase = false
