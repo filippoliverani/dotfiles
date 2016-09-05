@@ -73,6 +73,8 @@ brew install dfc
 brew install git
 brew install ruby
 brew install python
+brew install php57
+brew install racket
 brew install npm
 brew install tmux
 brew install reattach-to-user-namespace
@@ -80,11 +82,11 @@ brew install tree
 brew install ranger
 brew install the_silver_searcher
 brew install vim --with-python --with-ruby --with-perl --env-std --override-system-vim
-brew install docker-compose
-brew install docker-machine
+brew install packer
 brew install caskroom/cask/brew-cask
 
 #cask
+brew cask install --appdir="/Applications" --force google-chrome
 brew cask install --appdir="/Applications" --force alfred
 brew cask install --appdir="/Applications" --force caffeine
 brew cask install --appdir="/Applications" --force cyberduck
@@ -98,12 +100,16 @@ brew cask install --appdir="/Applications" --force iterm2
 brew cask install --appdir="/Applications" --force the-unarchiver
 brew cask install --appdir="/Applications" --force chefdk
 brew cask install --appdir="/Applications" --force vagrant
-brew cask install --appdir="/Applications" --force packer
 brew cask install --appdir="/Applications" --force atom
 brew cask install --appdir="/Applications" --force virtualbox
 brew cask install --appdir="/Applications" --force gimp
 brew cask install --appdir="/Applications" --force inkscape
 brew cask install --appdir="/Applications" --force postman
+brew cask install --appdir="/Applications" --force docker
+
+#scheme
+
+raco pkg install --auto --scope installation --skip-installed berkeley xrepl
 
 #powerline
 
