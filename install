@@ -3,7 +3,7 @@ set -e
 
 echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' > ~/.profile
 
-# config
+#config
 
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -54,58 +54,24 @@ defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -boo
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 
-killall Finder
-killall Dock
-killall SystemUIServer
+killall Finder || true
+killall Dock || true
+killall SystemUIServer || true
 
 sudo pmset -a sms 0
+sudo pmset -a powernap 0
+sudo pmset hibernatemode 25
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 #brew
+
 export HOMEBREW_NO_ANALYTICS=1
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 xcode-select --install
 brew doctor
-
-brew install psutils
-brew install dfc
-brew install git
-brew install ruby
-brew install python
-brew install php57
-brew install racket
-brew install npm
-brew install tmux
-brew install reattach-to-user-namespace
-brew install tree
-brew install ranger
-brew install the_silver_searcher
-brew install vim --with-python --with-ruby --with-perl --env-std --override-system-vim
-brew install packer
-brew install caskroom/cask/brew-cask
-
-#cask
-brew cask install --appdir="/Applications" --force google-chrome
-brew cask install --appdir="/Applications" --force alfred
-brew cask install --appdir="/Applications" --force caffeine
-brew cask install --appdir="/Applications" --force cyberduck
-brew cask install --appdir="/Applications" --force pomodone
-brew cask install --appdir="/Applications" --force monolingual
-brew cask install --appdir="/Applications" --force tunnelblick
-brew cask install --appdir="/Applications" --force google-drive
-brew cask install --appdir="/Applications" --force skype
-brew cask install --appdir="/Applications" --force calibre
-brew cask install --appdir="/Applications" --force iterm2
-brew cask install --appdir="/Applications" --force the-unarchiver
-brew cask install --appdir="/Applications" --force chefdk
-brew cask install --appdir="/Applications" --force vagrant
-brew cask install --appdir="/Applications" --force atom
-brew cask install --appdir="/Applications" --force virtualbox
-brew cask install --appdir="/Applications" --force gimp
-brew cask install --appdir="/Applications" --force inkscape
-brew cask install --appdir="/Applications" --force postman
-brew cask install --appdir="/Applications" --force docker
+brew tap Homebrew/bundle
+brew bundle
 
 #scheme
 
