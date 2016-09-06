@@ -73,6 +73,15 @@ brew doctor
 brew tap Homebrew/bundle
 brew bundle
 
+#atom
+apm install ex-mode
+apm install vim-mode
+
+#node
+
+npm install azure-cli -g
+npm install jshint -g
+
 #scheme
 
 raco pkg install --auto --scope installation --skip-installed berkeley xrepl
