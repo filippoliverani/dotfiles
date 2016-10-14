@@ -6,6 +6,7 @@ tap 'homebrew/homebrew-php'
 tap 'caskroom/cask'
 tap 'buo/cask-upgrade'
 
+brew 'mas'
 brew 'psutils'
 brew 'dfc'
 brew 'git'
