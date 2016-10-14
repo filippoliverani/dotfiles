@@ -88,10 +88,10 @@ raco pkg install --auto --scope installation --skip-installed berkeley xrepl
 
 #powerline
 
-pip install --upgrade pip
-pip install --upgrade setuptools
-pip install --upgrade psutil
-pip install --upgrade powerline-status
+pip install pip
+pip install setuptools
+pip install psutil
+pip install powerline-status
 
 mkdir -p ~/.config/powerline
 cp -R /usr/local/lib/python2.7/site-packages/powerline/config_files/** ~/.config/powerline
