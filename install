@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+sudo softwareupdate -ia
+
 echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' > ~/.profile
 
 #config
@@ -72,11 +74,6 @@ xcode-select --install
 brew doctor
 brew tap Homebrew/bundle
 brew bundle
-
-#app store
-
-mas install 497799835 #xcode
-mas install 715768417 #remote desktop
 
 #atom
 apm install ex-mode

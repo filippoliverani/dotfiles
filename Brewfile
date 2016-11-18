@@ -45,3 +45,7 @@ cask 'inkscape'
 cask 'postman'
 cask 'docker'
 cask 'tinkertool'
+
+mas 'Xcode', id: 497799835
+mas 'LastPass', id: 926036361
+mas 'Microsoft Remote Desktop', id: 715768417
