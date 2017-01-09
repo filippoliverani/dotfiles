@@ -81,8 +81,8 @@ apm install vim-mode
 
 #node
 
-npm install azure-cli -g
-npm install jshint -g
+npm install -g azure-cli
+npm install -g eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-promise eslint-plugin-react eslint-plugin-jsx-a11y
 
 #scheme
 
@@ -95,5 +95,6 @@ pip install setuptools
 pip install psutil
 pip install powerline-status
 
-mkdir -p ~/.config/powerline
-cp -R /usr/local/lib/python2.7/site-packages/powerline/config_files/** ~/.config/powerline
+#fonts
+
+curl -fLo ~/Library/Fonts/Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete.otf https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Inconsolata/complete/Inconsolata%20for%20Powerline%20Nerd%20Font%20Complete.otf
