@@ -45,6 +45,7 @@ cask 'inkscape'
 cask 'postman'
 cask 'docker'
 cask 'tinkertool'
+cask 'screenhero'
 
 mas 'Xcode', id: 497799835
 mas 'LastPass', id: 926036361
