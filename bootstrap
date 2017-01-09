@@ -16,6 +16,7 @@ ln -sf $path/gitconfig ~/.gitconfig
 ln -sf $path/gitignore ~/.gitignore
 ln -sf $path/gemrc ~/.gemrc
 ln -sf $path/mongorc.js ~/.mongorc.js
+ln -sf $path/eslintrc.js ~/.eslintrc.js
 ln -sf $path/ssh_config ~/.ssh/config
 mkdir -p ~/.local/share/applications
 ln -sf $path/mimeapps.list ~/.local/share/applications/mimeapps.list
