@@ -19,6 +19,9 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
     who = shortlog -s -s-
     aa = add -A
+    us = reset
+    uc = reset --soft HEAD^
+    tu = stash -u
 [push]
     default = current
 [merge]
@@ -26,4 +29,4 @@
 [diff]
     tool = vimdiff
 [pull]
-    rebase = false
+    rebase = true
