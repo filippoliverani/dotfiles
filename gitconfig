@@ -1,32 +1,37 @@
 [color]
-    branch = auto
-    diff = auto
-    status = auto
-    ui = auto
-    interactive = auto
+  branch = auto
+  diff = auto
+  status = auto
+  ui = auto
+  interactive = auto
 [user]
-    name = Filippo Liverani
-    email = filippo-liverani@users.noreply.github.com
+  name = Filippo Liverani
+  email = filippo-liverani@users.noreply.github.com
 [core]
-    editor = vim
+  editor = vim
 [alias]
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
-    df = diff
-    dc = diff --cached
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
-    who = shortlog -s -s-
-    aa = add -A
-    us = reset
-    uc = reset --soft HEAD^
-    tu = stash -u
+  st = status
+  ci = commit
+  br = branch
+  pl = pull
+  ps = push
+  co = checkout
+  df = diff --word-diff --color-words
+  dc = diff --word-diff --color-words --cached
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
+  who = shortlog -s -s-
+  aa = add -A
+  us = reset
+  uc = reset --soft HEAD^
+  tu = stash -u
 [push]
-    default = current
+  default = upstream
 [merge]
-    tool = vimdiff
+  tool = vimdiff
+  ff = only
 [diff]
-    tool = vimdiff
+  tool = vimdiff
 [pull]
-    rebase = true
+  rebase = true
+[fetch]
+  prune = true
