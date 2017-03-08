@@ -4,6 +4,7 @@
 --follow
 --max-count=100
 --ignore-dir=.bundle
+--ignore-dir=.git
 --ignore-dir=vendor
 
 --type-add=ruby=rake,haml
