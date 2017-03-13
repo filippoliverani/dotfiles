@@ -24,6 +24,7 @@
   us = reset
   uc = reset --soft HEAD^
   tu = stash -u
+  ctags = !.git/hooks/ctags
 [push]
   default = upstream
 [merge]
@@ -35,3 +36,5 @@
   rebase = true
 [fetch]
   prune = true
+[init]
+	templatedir = ~/.git_template
