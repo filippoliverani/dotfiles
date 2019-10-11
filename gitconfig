@@ -16,8 +16,8 @@
   pl = pull
   ps = push
   co = checkout
-  df = diff --word-diff --color-words
-  dc = diff --word-diff --color-words --cached
+  df = diff --color
+  dc = diff --color
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
   who = shortlog -s -s-
   aa = add -A
