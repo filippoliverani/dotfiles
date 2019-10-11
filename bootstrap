@@ -20,5 +20,3 @@ mkdir -p ~/.local/share/applications
 ln -sf $path/mimeapps.list ~/.local/share/applications/mimeapps.list
 mkdir -p ~/.config/fontconfig
 ln -sf $path/fonts.conf ~/.config/fontconfig/fonts.conf
-mkdir -p ~/.config/powerline
-ln -sf $path/powerline-config.json ~/.config/powerline/config.json
