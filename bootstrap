@@ -9,6 +9,7 @@ else
 fi
 
 ln -sf $path/ackrc ~/.ackrc
+ln -sf $path/ctags.d ~/.ctags.d
 ln -sf $path/ignore ~/.ignore
 ln -sf $path/gitconfig ~/.gitconfig
 ln -sf $path/gitignore ~/.gitignore

@@ -16,7 +16,7 @@
   pl = pull
   ps = push
   co = checkout
-  df = diff --color
+  df = diff --color --patience
   dc = diff --color
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full --all
   who = shortlog -s -s-

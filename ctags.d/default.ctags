@@ -1,0 +1,9 @@
+--recurse=yes
+
+--exclude=.git
+--exclude=build
+--exclude=libs
+--exclude=log
+--exclude=node_modules
+--exclude=tmp
+--exclude=vendor
