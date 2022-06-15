@@ -6,6 +6,7 @@
 --ignore-dir=.bundle
 --ignore-dir=.git
 --ignore-dir=vendor
+--ignore-dir=spec/cassettes
 
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc
