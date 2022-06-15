@@ -11,6 +11,7 @@ fi
 ln -sf $path/ackrc ~/.ackrc
 ln -sf $path/ctags.d ~/.ctags.d
 ln -sf $path/ignore ~/.ignore
+ln -sf $path/gitattributes ~/.gitattributes
 ln -sf $path/gitconfig ~/.gitconfig
 ln -sf $path/gitignore ~/.gitignore
 ln -sf $path/git_template ~/.git_template

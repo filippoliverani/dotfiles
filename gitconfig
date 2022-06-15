@@ -9,6 +9,8 @@
   email = dev@mailvore.com
 [core]
   editor = vim
+  attributesfile = /Users/filippo/.gitattributes
+  pager = delta
 [alias]
   st = status
   ci = commit
@@ -32,13 +34,19 @@
 [merge]
   tool = vimdiff
   ff = only
+  conflictstyle = diff3
 [diff]
   tool = vimdiff
+  colorMoved = default
 [pull]
   rebase = true
 [fetch]
   prune = true
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 [help]
-	autocorrect = 1
+  autocorrect = 1
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
