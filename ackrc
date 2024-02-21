@@ -7,6 +7,8 @@
 --ignore-dir=.git
 --ignore-dir=vendor
 --ignore-dir=spec/cassettes
+--ignore-dir=public/storage
+--ignore-dir=public/uploads
 
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc
