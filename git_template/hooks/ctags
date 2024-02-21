@@ -2,6 +2,8 @@
 
 set -e
 
+exit 0
+
 PATH="/usr/local/bin:$PATH"
 dir="`git rev-parse --git-dir`"
 trap 'rm -f "$dir/$$.tags"' EXIT
