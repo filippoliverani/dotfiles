@@ -31,10 +31,11 @@
   ctags = !.git/hooks/ctags
 [push]
   default = upstream
+  autosetupremote = true
 [merge]
   tool = vimdiff
   ff = only
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 [diff]
   tool = vimdiff
   colorMoved = default
@@ -43,6 +44,7 @@
 [fetch]
   prune = true
 [init]
+  defaultBranch = main
   templatedir = ~/.git_template
 [help]
   autocorrect = 1
@@ -50,3 +52,5 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
+[rebase]
+  autosquash = true
